@@ -12,8 +12,8 @@ jobs:
         run: echo "Hallo von GitHub Actions!"
       
       - name: Datum anzeigen
-        date
-        run: _______________
+        
+        run: date
       
       - name: Systeminfo
         run: |
