@@ -1,0 +1,22 @@
+```yaml
+name: Mein erster Workflow
+
+on: push
+
+jobs:
+  gruessen:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ausgabe Begrüßung
+        run: echo "Hallo von GitHub Actions!"
+      
+      - name: Datum anzeigen
+        date
+        run: _______________
+      
+      - name: Systeminfo
+        run: |
+          echo "Runner OS: $RUNNER_OS"
+          echo "Job Status: ${{ job.status }}"
+```
