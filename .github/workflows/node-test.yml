@@ -1,0 +1,50 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x]
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      # TODO: Fügen Sie die Node.js Setup Action hinzu
+      - name: Node.js Setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version}}
+      
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      
+      - name: Install Dependencies
+        run: |
+          # TODO: Erstellen Sie eine package.json mit einem Test-Script
+          echo '{
+            "name": "test-projekt",
+            "version": "1.0.0",
+            "scripts": {
+              "test": "echo \"Tests laufen für Node ${{ matrix.node-version }}\" && exit 0"
+            }
+          }' > package.json
+          
+          npm install
+      
+      - name: Tests ausführen
+        # TODO: Führen Sie das Test-Script aus
+        run: npm test
+
