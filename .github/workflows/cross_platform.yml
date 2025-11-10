@@ -32,8 +32,6 @@ jobs:
           # Verwenden Sie if-Bedingungen für OS-spezifische Befehle
              if [[ "$RUNNER_OS" == "Linux" ]]; then
                echo "🐧 Dies ist ein Linux-Runner."
-             elif [[ "$RUNNER_OS" == "Windows" ]]; then
-               echo "Dies ist ein Windows-Runner."
              elif [[ "$RUNNER_OS" == "macOS" ]]; then
                echo "Dies ist ein macOS-Runner."
              else
